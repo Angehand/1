@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄汉东 | 个人时间轴</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #000000;
+            --secondary: #6B7280;
+            --border: #E5E7EB;
+            --background: #FFFFFF;
+            --hover: #F3F4F6;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary);
+            background-color: var(--background);
+        }
+        
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--border);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -13px;
+        }
+        
+        .right::after {
+            left: -13px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid #3B82F6;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0;
+        }
+        
+        .timeline-content-header h3 {
+            margin-bottom: 0;
+        }
+        
+        .timeline-content-header p {
+            margin-bottom: 0;
+        }
+        
+        .timeline-content:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-5px);
+        }
+        
+        .timeline-content.education {
+            border-left-color: #10B981;
+            background-color: rgba(16, 185, 129, 0.05);
+        }
+        
+        .timeline-content.internship {
+            border-left-color: #3B82F6;
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        
+        .timeline-content.project {
+            border-left-color: #F59E0B;
+            background-color: rgba(245, 158, 11, 0.05);
+        }
+        
+        .timeline-content.skill {
+            border-left-color: #8B5CF6;
+            background-color: rgba(139, 92, 246, 0.05);
+        }
+        
+
+        
+        @media screen and (max-width: 768px) {
+            .timeline-container::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after,
+            .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button">
+        <a href="Angehand.html" class="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors">
+            <i class="fas fa-arrow-left mr-2"></i> 返回主页
+        </a>
+    </div>
+    
+    <!-- Header Section -->
+    <header class="py-16 px-6 bg-gray-50">
+        <div class="container mx-auto text-center">
+            <h1 class="text-6xl font-extrabold mb-4 font-serif transform -rotate-2">
+                Handの
+                <span class="bg-red-500 text-white px-2 py-1 inline-block transform transition-transform duration-300 hover:scale-125">
+                    游戏进度条
+                </span>
+            </h1>
+        </div>
+    </header>
+    
+    <!-- Timeline Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <!-- 任务标题 -->
+            <div class="flex justify-center items-center mb-8">
+                <div class="relative mr-24">
+                    <div class="bg-pink-200 w-24 h-1"></div>
+                    <div class="bg-white border-2 border-black px-6 py-3 font-bold text-xl">主线任务</div>
+                    <div class="bg-pink-400 w-24 h-1 absolute bottom-0 left-0"></div>
+                </div>
+                
+                <div class="relative ml-24">
+                    <div class="bg-green-200 w-24 h-1"></div>
+                    <div class="bg-white border-2 border-black px-6 py-3 font-bold text-xl">支线任务</div>
+                    <div class="bg-green-400 w-24 h-1 absolute bottom-0 left-0"></div>
+                </div>
+            </div>
+            
+            <div class="timeline-container">
+                <!-- 2026年 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content project">
+                        <div class="timeline-content-header">
+                            <h3 class="text-xl font-bold">B站UP主</h3>
+                            <p class="text-secondary">2026</p>
+                        </div>
+                        <p class="text-sm text-gray-600">星小东</p>
+                    </div>
+                </div>
+                
+                <!-- 2025年 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content internship">
+                        <div class="timeline-content-header">
+                            <h3 class="text-xl font-bold">即刻公司 - 实习</h3>
+                            <p class="text-secondary">2025.10 - 2025.12</p>
+                        </div>
+                        <p class="text-sm text-gray-600">AI产品增长</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content education">
+                        <div class="timeline-content-header">
+                            <h3 class="text-xl font-bold">上海外国语大学</h3>
+                            <p class="text-secondary">2025.9</p>
+                        </div>
+                        <p class="text-sm text-gray-600">数字经济专业硕士</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content internship">
+                        <div class="timeline-content-header">
+                            <h3 class="text-xl font-bold">蚂蚁集团 - 实习</h3>
+                            <p class="text-secondary">2025.3 - 2025.6</p>
+                        </div>
+                        <p class="text-sm text-gray-600">广告投放</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content skill">
+                        <div class="timeline-content-header">
+                            <h3 class="text-xl font-bold">AI工具学习</h3>
+                            <p class="text-secondary">2025</p>
+                        </div>
+                        <p class="text-sm text-gray-600">Gemini、Kimi、即梦、Xmind等</p>
+                    </div>
+                </div>
+                
+                <!-- 2022-2023年 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content project">
+                        <div class="timeline-content-header">
+                            <h3 class="text-xl font-bold">全国电子商务三创赛</h3>
+                            <p class="text-secondary">2022.10 - 2023.9</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2021年 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content education">
+                        <div class="timeline-content-header">
+                            <h3 class="text-xl font-bold">浙江农林大学</h3>
+                            <p class="text-secondary">2021.9 - 2024.6</p>
+                        </div>
+                        <p class="text-sm text-gray-600">电子商务专业本科</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-gray-50">
+        <div class="container mx-auto text-center">
+            <p class="text-secondary">© 2025 黄汉东. 保留所有权利.</p>
+        </div>
+    </footer>
+</body>
+</html>
