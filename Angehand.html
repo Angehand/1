@@ -6,6 +6,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Handwriting font for background -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- GSAP for animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -61,12 +63,24 @@
         }
         
         /* Custom styles */
+        html, body {
+            height: 100%;
+        }
         body {
-            background-color: #ffffff;
+            background-color: #7ebefb;
+            background-image: url("绿色背景矢量.svg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: #000000;
             font-family: 'Inter', system-ui, sans-serif;
             overflow-x: hidden;
         }
+        .screen { background: transparent !important; }
+        .screen.bg-light { background: transparent !important; }
+        
+
         
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -263,6 +277,8 @@
     </style>
 </head>
 <body>
+
+
     <!-- Custom Cursor -->
     <div id="custom-cursor" class="fixed w-6 h-6 rounded-full border border-black pointer-events-none mix-blend-difference z-50 transform -translate-x-1/2 -translate-y-1/2 opacity-0"></div>
 
@@ -274,9 +290,8 @@
                 
                 <div class="hidden md:flex items-center gap-2">
                     <a href="#about" data-target="#about" class="nav-link">关于我</a>
-                    <a href="#education" data-target="#education" class="nav-link">教育背景</a>
                     <a href="#experience" data-target="#experience" class="nav-link">实习经历</a>
-
+                    <a href="#works" data-target="#works" class="nav-link">作品</a>
                     <a href="#videos" data-target="#videos" class="nav-link">视频</a>
                     <a href="#contact" data-target="#contact" class="nav-link">联系方式</a>
                 </div>
@@ -291,9 +306,8 @@
         <div class="md:hidden absolute w-full left-0 top-full bg-white border-t border-border transform -translate-y-full opacity-0 transition-all duration-300 invisible" id="mobile-menu">
             <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
                 <a href="#about" data-target="#about" class="mobile-nav-link">关于我</a>
-                <a href="#education" data-target="#education" class="mobile-nav-link">教育背景</a>
                 <a href="#experience" data-target="#experience" class="mobile-nav-link">实习经历</a>
-
+                <a href="#works" data-target="#works" class="mobile-nav-link">作品</a>
                 <a href="#videos" data-target="#videos" class="mobile-nav-link">视频</a>
                 <a href="#contact" data-target="#contact" class="mobile-nav-link">联系方式</a>
             </div>
@@ -304,7 +318,6 @@
     <div class="fixed right-8 top-1/2 transform -translate-y-1/2 z-40 hidden md:flex flex-col space-y-6">
         <div class="nav-dot active" data-target="#hero"></div>
         <div class="nav-dot" data-target="#about"></div>
-        <div class="nav-dot" data-target="#education"></div>
         <div class="nav-dot" data-target="#experience"></div>
 
         <div class="nav-dot" data-target="#contact"></div>
@@ -361,7 +374,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="screen relative min-h-screen flex items-center z-40 bg-white">
+    <section id="about" class="screen relative py-12 md:py-14 z-40 bg-white">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-12 gap-8">
                 <!-- Left column with decorative elements -->
@@ -371,117 +384,65 @@
                         <h2 class="text-4xl font-bold mb-6 px-4 py-2 bg-blue-100 inline-block transition-transform duration-300 hover:scale-105">关于我</h2>
                         <div class="w-16 h-px bg-black mb-8"></div>
                         <div class="hidden md:block">
-                            <div class="w-px h-32 bg-black opacity-20 mx-auto"></div>
+                            <div class="w-1px h-32 bg-black opacity-0 mx-auto"></div>
                         </div>
+                        <div class="text-xs uppercase tracking-widest text-secondary mb-4">02</div>
+                        <h2 class="text-4xl font-bold mb-6 px-4 py-2 bg-blue-100 inline-block transition-transform duration-300 hover:scale-105">教育背景</h2>
+                        <div class="w-16 h-px bg-black mb-8"></div>
                     </div>
                 </div>
                 
                 <!-- Right column with content -->
                 <div class="col-span-12 md:col-span-9">
-                    <div class="bg-light p-8 md:p-12 mb-12">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-12 hover:shadow-xl transition-shadow">
                         <p class="text-lg mb-6 leading-relaxed">
                             我叫<strong>黄汉东</strong>，上海外国语大学数字经济硕士在读、浙江农林大学电子商务本科，成绩专业前10%，斩获电子商务三创赛全国一等奖，熟练运用Figma、Xmind、Excel、SQL、office等办公软件，可独立进行产品原型设计、可撰写清晰的产品需求文档PRD；热爱AI，熟悉各类LLM，常用GPT、Gemini、DS等AI工具提高工作效率。英语六级和日语N1、普通话二甲、学习能力强，具备良好的沟通能力。
                         </p>
                     </div>
                     
-                    <!-- Stats -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div class="border border-border p-6 hover:border-black transition-smooth">
-                            <div class="text-3xl font-thin mb-2">SQL</div>
-                            <div class="text-sm text-secondary">
-</div>
-                            <div class="w-8 h-px bg-black mt-4"></div>
-                        </div>
-                        <div class="border border-border p-6 hover:border-black transition-smooth">
-                            <div class="text-3xl font-thin mb-2">PRD</div>
-                            <div class="text-sm text-secondary">
-</div>
-                            <div class="w-8 h-px bg-black mt-4"></div>
-                        </div>
-                        <div class="border border-border p-6 hover:border-black transition-smooth">
-                            <div class="text-3xl font-thin mb-2">AI</div>
-                            <div class="text-sm text-secondary">
-</div>
-                            <div class="w-8 h-px bg-black mt-4"></div>
-                        </div>
-                        <div class="border border-border p-6 hover:border-black transition-smooth">
-                            <div class="text-3xl font-thin mb-2">PE</div>
-                            <div class="text-sm text-secondary">
-</div>
-                            <div class="w-8 h-px bg-black mt-4"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="screen relative min-h-screen flex items-center z-30 bg-light">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-12 gap-8">
-                <!-- Left column with decorative elements -->
-                <div class="col-span-12 md:col-span-3">
-                    <div class="sticky top-32">
-                        <div class="text-xs uppercase tracking-widest text-secondary mb-4">02</div>
-                        <h2 class="text-4xl font-bold mb-6 px-4 py-2 bg-blue-100 inline-block transition-transform duration-300 hover:scale-105">教育背景</h2>
-                        <div class="w-16 h-px bg-black mb-8"></div>
-                        <div class="hidden md:block">
-                            <div class="w-px h-32 bg-black opacity-20 mx-auto"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right column with content -->
-                <div class="col-span-12 md:col-span-9">
-                    <!-- Timeline -->
-                    <div class="relative pl-8">
-                        <!-- Timeline line -->
-                        <div class="timeline-line"></div>
-                        
+                    <!-- Education content -->
+                    <div class="space-y-6">
                         <!-- Item 1 -->
-                        <div class="mb-16 relative">
-                            <div class="timeline-dot" style="top: 6px;"></div>
+                        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                             <div class="flex flex-col md:flex-row justify-between mb-4">
-                                <h3 class="text-xl font-medium">上海外国语大学</h3>
+                                <h4 class="text-xl font-medium">上海外国语大学</h4>
                                 <div class="text-sm text-secondary">2025.9 - 2027.6</div>
                             </div>
                             <div class="text-secondary mb-6">211院校 | 数字经济 | 硕士</div>
                             <ul class="space-y-3">
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-pink-400 mt-2 mr-3"></div>
                                     <span>成绩专业前10%、英语六级</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-pink-400 mt-2 mr-3"></div>
                                     <span>数字科技前沿概论、数据库原理SQL</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-pink-400 mt-2 mr-3"></div>
                                     <span>生成式人工智能理论与实践</span>
                                 </li>
                             </ul>
                         </div>
                         
                         <!-- Item 2 -->
-                        <div class="relative">
-                            <div class="timeline-dot" style="top: 6px;"></div>
+                        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                             <div class="flex flex-col md:flex-row justify-between mb-4">
-                                <h3 class="text-xl font-medium">浙江农林大学</h3>
+                                <h4 class="text-xl font-medium">浙江农林大学</h4>
                                 <div class="text-sm text-secondary">2021.9 - 2025.6</div>
                             </div>
                             <div class="text-secondary mb-6">省重点高校 | 电子商务 | 本科</div>
                             <ul class="space-y-3">
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 mr-3"></div>
                                     <span>跨境电子商务、消费者行为学、python</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 mr-3"></div>
                                     <span>全国电子商务三创赛一等奖</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 mr-3"></div>
                                     <span>英语六级、日语N1、计算机二级、普通话二甲</span>
                                 </li>
                             </ul>
@@ -493,7 +454,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="screen relative min-h-screen flex items-center z-20 bg-white">
+    <section id="experience" class="screen relative py-12 md:py-14 z-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-12 gap-8">
                 <!-- Left column with decorative elements -->
@@ -511,81 +472,77 @@
                 <!-- Right column with content -->
                 <div class="col-span-12 md:col-span-9">
                     <!-- Experience items -->
-                    <div class="space-y-16">
+                    <div class="space-y-6">
                         <!-- Item 1 -->
-                        <div class="project-card border border-border p-8">
+                        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                             <div class="flex flex-col md:flex-row justify-between mb-4">
                                 <h3 class="text-xl font-medium">即刻公司</h3>
                                 <div class="text-sm text-secondary">2025.10 - 2025.12</div>
                             </div>
                             <div class="text-secondary mb-6">AI产品增长运营 | Chatbox AI | 上海</div>
-                            <ul class="space-y-4">
+                            <ul class="space-y-3">
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-400 mt-2 mr-3"></div>
                                     <span>项目背景：AI聚合工具——Chatbox AI的用户规模、转化、留存、付费不及预期，并且产品有待完善优化，希望通过多元化策略推动产品实现用户增长付费和通过用户反馈和问题优化产品。</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-400 mt-2 mr-3"></div>
                                     <span>体系搭建：从0到1搭建达人资源库：聚焦考研四六级学习、科研绘图、AI工具、职场面试、论文等核心赛道，累计筛选入库小红书KOC/KOL超500人、内容质量与数据表现俱佳的账号。</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-400 mt-2 mr-3"></div>
                                     <span>运营策划：主导输出合作Brief、制定脚本方向、报价协商、交付周期，提供内容打样与产品会员支持、跟进初稿审核、补充产品背书、发布落地，同步完成作品链接收集、款项结算及数据统计闭环管理。按预算动态优化头腰尾部达人配比；差异化规划内容形态，多维度评估达人并调整合作优先级；对于数据不稳定的博主通过阶梯报价机制降低投放风险。</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
-                                    <span>内容孵化：打造并优化可复用的日常运营的SOP，提高工作效率。复用爆款标题封面模板，补充自来水稿、大字报等物料丰富传播矩阵；推动发布笔记100 +篇，孵化爆款20+篇（单篇互动≥1000），最高单篇互动1.3w+，
-带动品牌搜索量激增30%。</span>
+                                    <div class="w-2 h-2 rounded-full bg-green-400 mt-2 mr-3"></div>
+                                    <span>内容孵化：打造并优化可复用的日常运营的SOP，提高工作效率。复用爆款标题封面模板，补充自来水稿、大字报等物料丰富传播矩阵；推动发布笔记100 +篇，孵化爆款20+篇（单篇互动≥1000），最高单篇互动1.3w+，带动品牌搜索量激增30%。</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-400 mt-2 mr-3"></div>
                                     <span>数据提升：为干货类博主提供Prompt支持，通过迭代优化提示词逻辑，输出可复用的高质量 Prompt方案，在作品内容中增加prompt等利他内容，精准触达用户对 “高效干货工具” 的核心需求，助力相关帖子点击率提升30%。针对发布初期高流量作品及时投放薯条推广提升曝光。</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-400 mt-2 mr-3"></div>
                                     <span>复盘调研：输出周/月度复盘报告，运用SQL、Excel提取已发布帖子数据，分析流量、互动及转化表现，针对低效赛道、场景及达人调整投放策略，优化异常作品，数据异常的内容，排查并修改敏感字眼等问题，保障内容合规发布；调研豆包、千问、Kimi等竞品广告投放场景，提炼可复用策略，为Chatbox投放优化提供参考依据。</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-400 mt-2 mr-3"></div>
                                     <span>舆情公关：根据实时热点和产品更新，及时更新官号内容，对产品的口碑负责，维护品牌形象。日常进行抖音、小红书的舆情监测，及时发现、处理、回查负面网络舆情。对用户的问题和反馈进行总结分类管理、打包处理case并及时和产品部门同步。</span>
                                 </li>
                             </ul>
                         </div>
                         
                         <!-- Item 2 -->
-                        <div class="project-card border border-border p-8">
+                        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                             <div class="flex flex-col md:flex-row justify-between mb-4">
                                 <h3 class="text-xl font-medium">蚂蚁集团</h3>
                                 <div class="text-sm text-secondary">2025.04 - 2025.07</div>
                             </div>
                             <div class="text-secondary mb-6">广告投放 | 借呗 | 杭州 |</div>
-                            <ul class="space-y-4">
+                            <ul class="space-y-3">
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 mr-3"></div>
                                     <span>负责借呗在小红书平台的科普广告投放，包括素人合作、薯条推广、敏感词替换等，提升广告触达率与点击率</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 mr-3"></div>
                                     <span>建立300+素人KOC资源库，沟通广告排期与内容节奏，任务完成效率提升50%</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 mr-3"></div>
                                     <span>借呗产品内容的特殊性，研究平台规则，了解并审核笔记内容敏感词，并快速找到合适恰当的词替换，最终笔记广告发布成功率提高90%。</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 mr-3"></div>
                                     <span>使用Excel进行数据分析，归纳平台机制与产品优化方向</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 mr-3"></div>
                                     <span>运用AI工具生成广告素材，素材产出效率提升25%，整体工作效率提升50%</span>
                                 </li>
                             </ul>
                         </div>
-
-                                
-                            
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -593,7 +550,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="screen relative min-h-screen flex items-center z-30 bg-light">
+    <section id="projects" class="screen relative py-12 md:py-14 z-30 bg-light">
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid grid-cols-12 gap-8">
                 <!-- Left column with section title -->
@@ -610,66 +567,130 @@
 
                 <!-- Right column with content -->
                 <div class="col-span-12 md:col-span-9">
-                    <!-- Project 1 -->
-                    <div class="project-card border border-border p-8 mb-12">
-                        <div class="flex flex-col md:flex-row justify-between mb-4">
-                            <h3 class="text-xl font-medium">全国大学生电子商务三创赛</h3>
-                            <div class="text-sm text-secondary">2022.10 - 2023.9</div>
+                    <div class="space-y-6">
+                        <!-- Project 1 -->
+                        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                            <div class="flex flex-col md:flex-row justify-between mb-4">
+                                <h3 class="text-xl font-medium">全国大学生电子商务三创赛</h3>
+                                <div class="text-sm text-secondary">2022.10 - 2023.9</div>
+                            </div>
+                            <div class="text-secondary mb-6">国家一等奖项目负责人</div>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 rounded-full bg-yellow-400 mt-2 mr-3"></div>
+                                    <span>负责市场调研、竞品分析与产品宣传</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 rounded-full bg-yellow-400 mt-2 mr-3"></div>
+                                    <span>项目营业额达3万+，团队排名全国前50</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 rounded-full bg-yellow-400 mt-2 mr-3"></div>
+                                    <span>荣获国家一等奖</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="text-secondary mb-6">国家一等奖项目负责人</div>
-                        <ul class="space-y-4">
-                            <li class="flex items-start">
-                                <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
-                                <span>负责市场调研、竞品分析与产品宣传</span>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
-                                <span>项目营业额达3万+，团队排名全国前50</span>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
-                                <span>荣获国家一等奖</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Right column with content -->
-                <div class="col-span-12 md:col-span-9">
-                    <!-- Project 1 -->
-                    <div class="project-card border border-border p-8 mb-12">
-                        <div class="flex flex-col md:flex-row justify-between mb-4">
-                            <h3 class="text-xl font-medium">AI经历</h3>
-                            <div class="text-sm text-secondary">
-</div>
+                        
+                        <!-- Project 2 -->
+                        <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                            <div class="flex flex-col md:flex-row justify-between mb-4">
+                                <h3 class="text-xl font-medium">AI经历</h3>
+                                <div class="text-sm text-secondary"></div>
+                            </div>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 rounded-full bg-indigo-400 mt-2 mr-3"></div>
+                                    <span>系统学习李继刚 Prompt 提示词方法，会设计并使用prompt模板；有自己设计模仿的一些实用prompt模板。</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 rounded-full bg-indigo-400 mt-2 mr-3"></div>
+                                    <span>会使用AIGC工具（如即梦、海螺、MJ）生成动画和模型，会用COZE制作和使用相关workflow和创建Agent，有自己设计制作的一些AIGC视频和prompt模板。</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 rounded-full bg-indigo-400 mt-2 mr-3"></div>
+                                    <span>喜欢vibe coding，会设计制作一些实用有趣网站、小程序、APP</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 rounded-full bg-indigo-400 mt-2 mr-3"></div>
+                                    <span>B站小UP主——星小东AI，更新“每天学习一个AI产品”系列，作品最高播放量3w+</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="text-secondary mb-6">AI爱好者</div>
-                        <ul class="space-y-4">
-                            <li class="flex items-start">
-                                <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
-                                <span>系统学习李继刚 Prompt 提示词方法，会设计并使用prompt模板；有自己设计模仿的一些实用prompt模板。</span>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
-                                <span>会使用AIGC工具（如即梦、海螺、MJ）生成动画和模型，会用COZE制作和使用相关workflow和创建Agent，有自己设计制作的一些AIGC视频和prompt模板。</span>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
-                                <span>喜欢vibe coding，会设计制作一些实用有趣网站、小程序、APP</span>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="w-1.5 h-1.5 rounded-full bg-black mt-2 mr-3"></div>
-                                <span>B站小UP主——星小东AI，更新“每天学习一个AI产品”系列，作品最高播放量3w+</span>
-                            </li>
-                        </ul>
                     </div>
-                </div>
             </div>
         </div>
     </div></section>
 
+    <!-- Works Section -->
+    <section id="works" class="screen relative py-12 md:py-14 z-10 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-12 gap-8">
+                <!-- Left column with decorative elements -->
+                <div class="col-span-12 md:col-span-3">
+                    <div class="sticky top-32">
+                        <div class="text-xs uppercase tracking-widest text-secondary mb-4">05</div>
+                        <h2 class="text-4xl font-bold mb-6 px-4 py-2 bg-blue-100 inline-block transition-transform duration-300 hover:scale-105">作品</h2>
+                        <div class="w-16 h-px bg-black mb-8"></div>
+                        <div class="hidden md:block">
+                            <div class="w-px h-32 bg-black opacity-20 mx-auto"></div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Right column with content -->
+                <div class="col-span-12 md:col-span-9">
+                    <div class="mb-16">
+                        <div class="flex justify-between items-center mb-10">
+                            <div class="inline-block">
+                                <h3 class="text-2xl font-bold bg-black text-white px-4 py-2">Works</h3>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Work Card 1 -->
+                            <a href="ColorFinder.html" target="_blank" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                <div class="aspect-video bg-gray-200">
+                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=color%20finder%20tool%20interface%20modern%20design&image_size=landscape_16_9" alt="Color Finder" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="text-lg font-medium mb-2">Color Finder</h4>
+                                    <p class="text-secondary text-sm mb-4">一个根据颜色寻找搭配方案的小工具。</p>
+                                    <span class="text-xs text-secondary">查看作品 →</span>
+                                </div>
+                            </a>
+
+                            <!-- Work Card 2 -->
+                            <a href="gomoku.html" target="_blank" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                <div class="aspect-video bg-gray-200">
+                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=gomoku%20game%20board%20interface%20modern%20design&image_size=landscape_16_9" alt="五子棋小游戏" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="text-lg font-medium mb-2">五子棋小游戏</h4>
+                                    <p class="text-secondary text-sm mb-4">和 AI 或好友一起下五子棋的小作品。</p>
+                                    <span class="text-xs text-secondary">开始游戏 →</span>
+                                </div>
+                            </a>
+
+                            <!-- Work Card 3 -->
+                            <a href="计时器/index.html" target="_blank" class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                <div class="aspect-video bg-gray-200">
+                                    <img src="pomodoro-cover.png" alt="番茄钟计时器" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="text-lg font-medium mb-2">番茄钟（Tomato）</h4>
+                                    <p class="text-secondary text-sm mb-4">一个帮你记录专注时间的小工具。</p>
+                                    <span class="text-xs text-secondary">打开番茄钟 →</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Videos Section -->
-    <section id="videos" class="screen relative min-h-screen flex items-center z-0 bg-white">
+    <section id="videos" class="screen relative py-12 md:py-14 z-0 bg-white">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-12 gap-8">
                 <!-- Left column with decorative elements -->
@@ -679,8 +700,11 @@
                         <h2 class="text-4xl font-bold mb-6 px-4 py-2 bg-blue-100 inline-block transition-transform duration-300 hover:scale-105">视频</h2>
                         <div class="w-16 h-px bg-black mb-8"></div>
                         <div class="hidden md:block">
-                            <div class="w-px h-32 bg-black opacity-20 mx-auto"></div>
+                            <div class="w-1px h-32 bg-black opacity-0 mx-auto"></div>
                         </div>
+                        <div class="text-xs uppercase tracking-widest text-secondary mb-4">07</div>
+                        <h2 class="text-4xl font-bold mb-6 px-4 py-2 bg-blue-100 inline-block transition-transform duration-300 hover:scale-105">联系方式</h2>
+                        <div class="w-16 h-px bg-black mb-8"></div>
                     </div>
                 </div>
                 
@@ -756,59 +780,35 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="screen relative min-h-screen flex items-center z-0 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-12 gap-8">
-                <!-- Left column with decorative elements -->
-                <div class="col-span-12 md:col-span-3">
-                    <div class="sticky top-32">
-                        <div class="text-xs uppercase tracking-widest text-secondary mb-4">06</div>
-                        <h2 class="text-4xl font-bold mb-6 px-4 py-2 bg-blue-100 inline-block transition-transform duration-300 hover:scale-105">联系方式</h2>
-                        <div class="w-16 h-px bg-black mb-8"></div>
-                        <div class="hidden md:block">
-                            <div class="w-px h-32 bg-black opacity-20 mx-auto"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right column with content -->
-                <div class="col-span-12 md:col-span-9">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
                         <!-- Contact info -->
-                        <div class="border border-border p-8">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 mt-12">
                             <h3 class="text-xl font-medium mb-8">联系信息</h3>
                             
-                            <div class="space-y-8">
-                                <div class="flex items-start">
-                                    <div class="w-10 h-10 rounded-full border border-black flex items-center justify-center mr-4 flex-shrink-0">
-                                        <i class="fa fa-envelope"></i>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="flex items-start p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fa fa-envelope text-pink-500"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-medium mb-1">邮箱</h4>
-                                        <a href="mailto:Angehand@163.com" class="text-secondary hover:text-primary transition-colors">Angehand@163.com</a>
+                                        <a href="mailto:Angehand@163.com" class="text-secondary hover:text-pink-500 transition-colors">Angehand@163.com</a>
                                     </div>
                                 </div>
                                 
-                                <div class="flex items-start">
-                                    <div class="w-10 h-10 rounded-full border border-black flex items-center justify-center mr-4 flex-shrink-0">
-                                        <i class="fa fa-phone"></i>
+                                <div class="flex items-start p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fa fa-phone text-blue-500"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-medium mb-1">电话</h4>
-                                        <a href="tel:+8613511271958" class="text-secondary hover:text-primary transition-colors">(+86) 13511271958</a>
+                                        <a href="tel:+8613511271958" class="text-secondary hover:text-blue-500 transition-colors">(+86) 13511271958</a>
                                     </div>
                                 </div>
                                 
-                                <div class="flex items-start">
-                                    <div class="w-10 h-10 rounded-full border border-black flex items-center justify-center mr-4 flex-shrink-0">
-                                        <i class="fa fa-map-marker"></i>
+                                <div class="flex items-start p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fa fa-map-marker text-green-500"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-medium mb-1">地址</h4>
@@ -816,50 +816,16 @@
                                     </div>
                                 </div>
                                 
-                                <div class="pt-4">
-                                    <h4 class="font-medium mb-4">社交媒体</h4>
-                                    <div class="flex space-x-4">
-                                        <a href="#" class="w-10 h-10 rounded-full border border-black flex items-center justify-center hover:bg-black hover:text-white transition-smooth">
-                                            <i class="fa fa-weixin"></i>
-                                        </a>
-                                        <a href="#" class="w-10 h-10 rounded-full border border-black flex items-center justify-center hover:bg-black hover:text-white transition-smooth">
-                                            <i class="fa fa-weibo"></i>
-                                        </a>
-                                        <a href="#" class="w-10 h-10 rounded-full border border-black flex items-center justify-center hover:bg-black hover:text-white transition-smooth">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                        <a href="#" class="w-10 h-10 rounded-full border border-black flex items-center justify-center hover:bg-black hover:text-white transition-smooth">
-                                            <i class="fa fa-github"></i>
-                                        </a>
+                                <div class="flex items-start p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fa fa-weixin text-purple-500"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">微信</h4>
+                                        <p class="text-secondary">Angehand</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <!-- Contact form -->
-                        <div class="border border-border p-8">
-                            <h3 class="text-xl font-medium mb-8">发送消息</h3>
-                            
-                            <form id="contact-form" class="space-y-6">
-                                <div>
-                                    <label for="name" class="block text-sm mb-2">姓名</label>
-                                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-border focus:outline-none focus:border-black" placeholder="请输入您的姓名">
-                                </div>
-                                
-                                <div>
-                                    <label for="email" class="block text-sm mb-2">邮箱</label>
-                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-border focus:outline-none focus:border-black" placeholder="请输入您的邮箱">
-                                </div>
-                                
-                                <div>
-                                    <label for="message" class="block text-sm mb-2">消息</label>
-                                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-border focus:outline-none focus:border-black" placeholder="请输入您的消息"></textarea>
-                                </div>
-                                
-                                <button type="submit" class="w-full py-3 border border-black hover:bg-black hover:text-white transition-smooth">
-                                    发送消息
-                                </button>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -878,7 +844,6 @@
                 
                 <div class="flex space-x-8">
                     <a href="#about" class="text-sm text-secondary hover:text-primary transition-colors">关于我</a>
-                    <a href="#education" class="text-sm text-secondary hover:text-primary transition-colors">教育背景</a>
                     <a href="#experience" class="text-sm text-secondary hover:text-primary transition-colors">实习经历</a>
     
                 </div>
@@ -1097,9 +1062,9 @@
         function initScrollDifference() {
             const screens = document.querySelectorAll('.screen');
             
-            // Set initial z-index for screens
+            // Set initial z-index for screens (later sections on top so they stay clickable when scrolled into view)
             screens.forEach((screen, index) => {
-                screen.style.zIndex = 5 - index;
+                screen.style.zIndex = index;
             });
             
             // Create ScrollTrigger for each screen transition
